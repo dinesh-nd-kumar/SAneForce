@@ -27,20 +27,10 @@ data class Product(
 }
 
 
-class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
-    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
-        // Items are the same if their unique identifiers (e.g., name or ID) are the same
-        return oldItem.id == newItem.id
-    }
 
-    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-        // Items have the same content if all their properties are the same
-        return oldItem == newItem
-    }
-}
 
 data class RequestBody (
-    @SerializedName("data" ) var data : ArrayList<Data> = arrayListOf()
+    @SerializedName("data" ) var data : List<Data> = listOf()
 )
 
 data class Data (

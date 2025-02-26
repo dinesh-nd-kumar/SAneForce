@@ -1,6 +1,7 @@
 package com.example.saneforceshopping.repo
 
 import com.example.saneforceshopping.model.Product
+import com.example.saneforceshopping.model.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -12,7 +13,7 @@ interface ProductApis {
      fun getProducts(): Call<ArrayList<Product>>
 
     @POST("server/native_Db_V13.php?axn=save/taskproddets&divisionCode=258")
-     fun saveProducts(@Body data: List<Product>): Call<ResponseBody>
+     fun saveProducts(@Body data: RequestBody): Call<ResponseBody>
 
 
 }

@@ -21,32 +21,11 @@ class ShopViewModel(application: Application) : AndroidViewModel(application) {
         return repo.getData()
     }
 
-   /* fun removeItem(pos :Int)  {
-         repo.removeItem(pos)
-    }
-    fun updateItem(pos: Int, item: Product) {
-        repo.getData().value?.set(pos, item)
-    }*/
 
-    fun removeItem(pos: Int) {
-//        val currentList = repo.getData().value ?: return
-        if (pos >= 0 && pos < repo.getData().value?.size!!) {
-            repo.getData().value?.removeAt(pos)
-//            repo.updateData(updatedList) // Update the LiveData with a new list
-        }
-    }
 
-    fun updateItem(pos: Int, item: Product) {
-//        val currentList = repo.getData().value ?: return
-        if (pos >= 0 && pos < repo.getData().value?.size!!) {
-            repo.getData().value!![pos]  =  item
-//            repo.updateData(updatedList) // Update the LiveData with a new list
-        }
-    }
-
-    fun saveAll(){
+    fun saveAll(list : ArrayList<Product>){
         viewModelScope.launch {
-            repo.saveAll()
+            repo.saveAll(list)
         }
     }
 

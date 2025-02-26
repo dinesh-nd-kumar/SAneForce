@@ -46,7 +46,7 @@ class ListFragment : Fragment(), ProductAdapter1.ItemClickListener {
             Toast.makeText(requireContext(), "updated", Toast.LENGTH_SHORT).show()
         }
         binding.saveBtn.setOnClickListener {
-            shopViewModel?.saveAll()
+            productAdapter.productList?.let { it1 -> shopViewModel?.saveAll(it1) }
         }
 
     }

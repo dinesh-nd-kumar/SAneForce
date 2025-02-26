@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.saneforceshopping.model.Product
+import com.example.saneforceshopping.model.RequestBody
+import com.example.saneforceshopping.others.ProductConverter
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,9 +67,11 @@ class ShopRepo {
         productLiveData.value = currentList
     }*/
 
-    fun saveAll() {
+    fun saveAll(list : ArrayList<Product>) {
+        val listdata = ProductConverter.convertProductListToDataList(list)
+        val requstBody = RequestBody(listdata)
 
-        val call = Retrofit.api.saveProducts(productLiveData.value!!)
+        val call = Retrofit.api.saveProducts(requstBody)
         call.enqueue(object : Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
